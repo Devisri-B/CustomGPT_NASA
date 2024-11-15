@@ -1,0 +1,175 @@
+openapi: 3.1.0
+info:
+  title: NASA Data API
+  description: Interact with various NASA APIs for data ranging from Mars photos, near-earth objects, space weather, and more.
+  version: 'v1'
+servers:
+  - url: https://devisrib.pythonanywhere.com
+
+paths:
+  /api/iss_location:
+    get:
+      operationId: getISSLocation
+      summary: Retrieve the current location of the International Space Station (ISS).
+      responses:
+        '200':
+          description: Successful retrieval of ISS location data.
+        '400':
+          description: Bad Request
+  
+  /api/neo:
+    get:
+      operationId: getNEOData
+      summary: Retrieve data on near-earth objects (NEOs).
+      parameters:
+        - name: start_date
+          in: query
+          description: Start date for NEO data (YYYY-MM-DD).
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          description: End date for NEO data (YYYY-MM-DD).
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful retrieval of NEO data.
+        '400':
+          description: Bad Request
+
+  /api/apod:
+    get:
+      operationId: getAPOD
+      summary: Retrieve the Astronomy Picture of the Day (APOD).
+      parameters:
+        - name: start_date
+          in: query
+          description: Start date for APOD (YYYY-MM-DD).
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          description: End date for APOD (YYYY-MM-DD).
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful retrieval of the APOD.
+        '400':
+          description: Bad Request
+
+  /api/earth:
+    get:
+      operationId: getEarthObservationData
+      summary: Retrieve Earth observation data.
+      parameters:
+        - name: place
+          in: query
+          description: Place name to retrieve coordinates for Earth observation.
+          required: false
+          schema:
+            type: string
+        - name: lat
+          in: query
+          description: Latitude for Earth observation if place is not provided.
+          required: false
+          schema:
+            type: string
+            default: '1.5'
+        - name: lon
+          in: query
+          description: Longitude for Earth observation if place is not provided.
+          required: false
+          schema:
+            type: string
+            default: '100.75'
+      responses:
+        '200':
+          description: Successful retrieval of Earth observation data.
+        '400':
+          description: Bad Request
+
+  /api/space_weather:
+    get:
+      operationId: getSpaceWeatherData
+      summary: Retrieve space weather data on solar flares.
+      parameters:
+        - name: start_date
+          in: query
+          description: Start date for space weather data (YYYY-MM-DD).
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          description: End date for space weather data (YYYY-MM-DD).
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful retrieval of space weather data.
+        '400':
+          description: Bad Request
+
+
+  /api/geomagnetic_storms:
+    get:
+      operationId: getGeomagneticStormsData
+      summary: Retrieve data on geomagnetic storms.
+      parameters:
+        - name: start_date
+          in: query
+          description: Start date for geomagnetic storm data (YYYY-MM-DD).
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          description: End date for geomagnetic storm data (YYYY-MM-DD).
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful retrieval of geomagnetic storm data.
+        '400':
+          description: Bad Request
+
+  /api/interplanetary:
+    get:
+      operationId: getInterplanetaryShockData
+      summary: Retrieve data on Interplanetary Shocks (IPS).
+      parameters:
+        - name: start_date
+          in: query
+          description: Start date for IPS data (YYYY-MM-DD).
+          required: false
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          description: End date for IPS data (YYYY-MM-DD).
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful retrieval of IPS data.
+        '400':
+          description: Bad Request
