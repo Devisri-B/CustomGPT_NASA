@@ -1,5 +1,7 @@
 # CustomGPT: NASA Space Data Assistant
 
+Anyone can access this GPT by using this link https://chatgpt.com/g/g-P7EvBldcu-nasa-space-data-assistant
+
 ## Overview
 
 The NASA Space Data Assistant is a CustomGPT-powered plugin designed to interact with various NASA APIs. It offers data and insights from space-related datasets, including International Space Station (ISS) tracking, near-earth objects (NEOs), space weather, and more. The project is a combination of Python-based backend services, API integration, and legal provisions for usage.
